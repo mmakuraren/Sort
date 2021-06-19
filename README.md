@@ -1,2 +1,4 @@
-# Sort
- This is a research project of mine trying to reproduce all of the sorting algorithms made and potentially making new ones.
+# IMPORTANT
+ I DO OWN THIS MATERIAL WHILE IT IS STILL NOT DONE DO NOT CLAIM THIS AS YOUR OWN
+
+**details will be coming soon...**

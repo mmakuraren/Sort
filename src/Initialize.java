@@ -1,0 +1,77 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
+
+/**
+ * Initialize.java
+ * <p>
+ * This is a simple program that creates a list of numbers from 1-100000 from lowest to highest. Primary use of this
+ * program will only be for backing up the check folder in case something goes wrong. In most cases this is only used
+ * for beginning the program.
+ * <p>
+ *
+ * @author Matthew McLaren
+ * @version 06/19/2021
+ */
+public class Initialize {
+
+    private static final String CHECKFILEPATH = "prog/check.txt";  // path for the check file
+    private static final String RANDOMFILEPATH = "prog/random.txt";  // path for the random file
+    private static final String CASEFILEPATH = "prog/case.txt";  // path for the random file
+
+    /**
+     * This static method creates the check.txt file in case something happens with it that shouldn't happen.
+     *
+     * @throws InvalidPathException if invalid path is given
+     */
+    public static void createCheckFile() throws InvalidPathException {
+        // finds the file so it can override it
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(CHECKFILEPATH))) {
+            // adds the numbers from 1-1000
+            for (int i = 1; i <= 100000; i++) {
+                bw.write(i + "\n"); // adds the number in
+            }
+            bw.close();
+        } catch (IOException e) {
+            // this should only print if the path is bad
+            throw new InvalidPathException();
+        }
+    }
+
+    /**
+     * This static method returns the check array needed to keep track of progress.
+     *
+     * @return the check array which remains unchanged
+     */
+    public static ArrayList<Integer> parseCheckArray() {
+        ArrayList<Integer> checkArray = new ArrayList<>(); // initialize array list
+
+        // grabs values
+        try (BufferedReader br = new BufferedReader(new FileReader(CHECKFILEPATH))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                checkArray.add(Integer.parseInt(line));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // returns array list
+        return checkArray;
+    }
+
+    public static void createRandomFile(ArrayList<Integer> shuffleArray) throws InvalidPathException {
+        // finds the file so it can override it
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(RANDOMFILEPATH))) {
+            // adds the numbers from shuffled array list
+            for (Integer i : shuffleArray) {
+                bw.write(Integer.toString(i));
+            }
+            bw.close();
+        } catch (IOException e) {
+            // this should only print if the path is bad
+            throw new InvalidPathException();
+        }
+    }
+
+}

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Progress.java
@@ -10,19 +9,21 @@ import java.util.Collections;
  * @author Matthew McLaren
  * @version 06/19/2021
  */
-public class Progress extends Initialize{
+public class Progress extends Initialize {
 
     public static void main(String[] args) {
 
+        // initializes the project
         try {
-            createCheckFile();
-            ArrayList<Integer> checkArray = parseCheckArray();
-            Collections.shuffle(checkArray);
-            System.out.println(checkArray.get(0));
-            System.out.println(checkArray.get(checkArray.size() - 1));
+            createCheckFile(); // makes the check file
+            ArrayList<Integer> array = parseCheckArray(); // grabs the check array from file
+            shuffleArray(array); // shuffles values
+            createRandomFile(array); // sends it back to the random file
         } catch (InvalidPathException e) {
             e.printStackTrace();
         }
+
+        // begin a test
     }
 
 }

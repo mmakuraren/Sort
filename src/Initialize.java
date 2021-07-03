@@ -11,27 +11,27 @@ import java.util.Collections;
  * <p>
  *
  * @author Matthew McLaren
- * @version 06/19/2021
+ * @version 07/02/2021
  */
 public class Initialize {
 
     private static final String CHECKFILEPATH = "prog/check.txt";  // path for the check file
     private static final String RANDOMFILEPATH = "prog/random.txt";  // path for the random file
-    private static final String CASEFILEPATH = "prog/case.txt";  // path for the case file
+
+    //private static final String CASEFILEPATH = "prog/case.txt";  // path for the case file
 
     /**
      * This static method creates the check.txt file in case something happens with it that shouldn't happen.
      *
      * @throws InvalidPathException if invalid path is given
      */
-    public static void createCheckFile() throws InvalidPathException {
+    public static void createCheckFile(int count) throws InvalidPathException {
         // finds the file so it can override it
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(CHECKFILEPATH))) {
             // adds the numbers from 1-10000000
-            for (int i = 1; i <= 100000; i++) {
+            for (int i = 1; i <= count; i++) {
                 bw.write(i + "\n"); // adds the number in
             }
-            bw.close();
         } catch (IOException e) {
             // this should only print if the path is bad
             throw new InvalidPathException();
@@ -51,7 +51,6 @@ public class Initialize {
             for (Integer i : shuffleArray) {
                 bw.write(i + "\n");
             }
-            bw.close();
         } catch (IOException e) {
             // this should only print if the path is bad
             throw new InvalidPathException();
@@ -133,7 +132,6 @@ public class Initialize {
         // checks to make sure that everything is shuffled
         while (!compareShuffle(array)) {
             Collections.shuffle(array); // shuffles the array again
-            System.out.println("shuffled again");
         }
     }
 

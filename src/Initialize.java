@@ -28,7 +28,6 @@ public class Initialize {
     public static void createCheckFile(int count) throws InvalidPathException {
         // finds the file so it can override it
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(CHECKFILEPATH))) {
-            // adds the numbers from 1-10000000
             for (int i = 1; i <= count; i++) {
                 bw.write(i + "\n"); // adds the number in
             }

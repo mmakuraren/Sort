@@ -1,11 +1,11 @@
 public interface SortOptions {
 
     void execute();
+    void progress();
     boolean check();
-    float progress();
     long getTimeInSeconds();
-    int getPassCount();
-    int getCompareCount();
-    int getArrayAccessCount();
+    long getPassCount();
+    long getCompareCount();
+    long getArrayAccessCount();
 
 }
